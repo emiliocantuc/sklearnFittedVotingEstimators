@@ -6,11 +6,11 @@ made using both fitted and unfitted estimators.
 In addition, the modified VotingClassifier supports scenarios where the voting models have been trained on a different set of labels.
 
 # Usage
-Both ModifiedVotingClassifier and ModifiedVotingRegressor act like sklearn's VotingClassifier and VotingRegressor respectively, the only exception being that their constructors take both unfitted and fitted estimators:
+Both the modified VotingClassifier and VotingRegressor act like sklearn's VotingClassifier and VotingRegressor respectively, the only exception being that their constructors take in both unfitted and fitted estimators:
 
 ```
 # Classification
-eclf1 = ModifiedVotingClassifier(
+eclf1 = VotingClassifier(
     fitted_estimators=[('lr', clf1), ('rf', clf2)],
     unfitted_estimators=[('gnb', clf3)],
     weights=[0.5,0.3,0.2], # gnb:0.5, lr:0.3, rf:0.2
@@ -23,7 +23,7 @@ eclf1 = eclf1.fit(X,y)
 preds=eclf1.predict(X)
 
 # Regression
-er = ModifiedVotingRegressor(
+er = VotingRegressor(
     fitted_estimators=[('lr', r1), ('rf', r2)],
     unfitted_estimators=[('r3', r3)],
     weights=[0.6,0.2,0.2],
@@ -53,8 +53,8 @@ y3 = np.array(['D','E','A','C','B','Z'])
 for est,y in zip([clf1,clf2],[y1,y2]):
     est.fit(X,y)
 
-# Instantiate our ModifiedVotingClassifier
-eclf1 = ModifiedVotingClassifier(
+# Instantiate our VotingClassifier
+eclf1 = VotingClassifier(
     fitted_estimators=[('lr', clf1), ('rf', clf2)],
     unfitted_estimators=[('gnb', clf3)],
     voting='hard'

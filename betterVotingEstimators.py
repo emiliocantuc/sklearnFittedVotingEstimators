@@ -74,7 +74,7 @@ def fit(self, X, y, sample_weight=None):
 
     return self
 
-class ModifiedVotingRegressor(VotingRegressor):
+class VotingRegressor(VotingRegressor):
     """Prediction voting regressor for unfitted and/or fitted estimators.
 
     This is a modification of sklearn's VotingRegressor that takes both
@@ -211,7 +211,7 @@ class ModifiedVotingRegressor(VotingRegressor):
         return fit(self,X, y, sample_weight)
 
 
-class ModifiedVotingClassifier(VotingClassifier):
+class VotingClassifier(VotingClassifier):
     """Soft Voting/Majority Rule classifier for unfitted and/or fitted estimators.
 
     This is a modified implementation of sklearn's VotingClassifier that
