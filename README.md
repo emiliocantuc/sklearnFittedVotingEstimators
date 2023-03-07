@@ -9,6 +9,8 @@ In addition, the modified VotingClassifier supports scenarios where the voting m
 Both the modified VotingClassifier and VotingRegressor act like sklearn's VotingClassifier and VotingRegressor respectively, the only exception being that their constructors take in both unfitted and fitted estimators:
 
 ```
+from betterVotingEstimators import VotingClassifier,VotingRegressor
+
 # Classification
 eclf1 = VotingClassifier(
     fitted_estimators=[('lr', clf1), ('rf', clf2)],
