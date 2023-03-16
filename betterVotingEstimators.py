@@ -52,12 +52,13 @@ def fit(self, X, y, sample_weight=None):
         for idx, clf in enumerate(clfs)
         if clf != "drop" and clf in unfitted_clfs
     )
+    # Save unfitted estimators
+    self.unfitted_estimators_=self.estimators_[:]
 
     # Add fitted estimators (that are not dropped)
     self.estimators_.extend([clf for clf in clfs if clf != "drop" and clf in fitted_clfs])
 
-    # Save both unfitted and fitted estimators
-    self.unfitted_estimators_=self.estimators_[:]
+    # Save fitted estimators
     self.fitted_estimators_=[clf for clf in clfs if clf != "drop" and clf in fitted_clfs]
 
     # Save a dictionary name -> estimator (containing both fitted and unfitted estimators).
